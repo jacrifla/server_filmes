@@ -4,7 +4,7 @@ const app = express();
 
 // Configuração do CORS
 const corsOptions = {
-  origin: ['http://localhost:4000', 'https://procura-filmes.netlify.app'],
+  origin: ['http://localhost:5173', 'https://procura-filmes.netlify.app', 'https://server-filmes-production.up.railway.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
@@ -12,6 +12,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+
+app.options('*', cors(corsOptions));
 
 // Rotas da API
 app.use('/media', require('./routes/mediaRoutes'));
